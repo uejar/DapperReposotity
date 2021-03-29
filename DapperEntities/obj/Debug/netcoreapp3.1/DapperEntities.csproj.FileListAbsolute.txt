@@ -1,0 +1,9 @@
+F:\DotnetProject\Dapper-xTest\DapperEntities\bin\Debug\netcoreapp3.1\DapperEntities.deps.json
+F:\DotnetProject\Dapper-xTest\DapperEntities\bin\Debug\netcoreapp3.1\DapperEntities.dll
+F:\DotnetProject\Dapper-xTest\DapperEntities\bin\Debug\netcoreapp3.1\DapperEntities.pdb
+F:\DotnetProject\Dapper-xTest\DapperEntities\obj\Debug\netcoreapp3.1\DapperEntities.AssemblyInfoInputs.cache
+F:\DotnetProject\Dapper-xTest\DapperEntities\obj\Debug\netcoreapp3.1\DapperEntities.AssemblyInfo.cs
+F:\DotnetProject\Dapper-xTest\DapperEntities\obj\Debug\netcoreapp3.1\DapperEntities.csproj.CoreCompileInputs.cache
+F:\DotnetProject\Dapper-xTest\DapperEntities\obj\Debug\netcoreapp3.1\DapperEntities.dll
+F:\DotnetProject\Dapper-xTest\DapperEntities\obj\Debug\netcoreapp3.1\DapperEntities.pdb
+F:\DotnetProject\Dapper-xTest\DapperEntities\obj\Debug\netcoreapp3.1\DapperEntities.csprojAssemblyReference.cache
