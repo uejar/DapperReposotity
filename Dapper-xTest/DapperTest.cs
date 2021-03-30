@@ -5,6 +5,7 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 namespace Dapper_xTest
 {
@@ -16,13 +17,13 @@ namespace Dapper_xTest
         public void Initliazation()
         {
             Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
-            DapperExtensions.DapperExtensions.SqlDialect = new MySqlDialect();
-            DapperExtensions.DapperExtensions.DefaultMapper = typeof(DapperClassMapper<>);
+            DapperExtensions.DapperExtensions.Configure(typeof(SnowClassMapper<>), new List<Assembly>(), new MySqlDialect());
+            DapperExtensions.DapperExtensions.InstanceFactory = (config) => { return new SnowDapperImplementor(new SnowSqlGeneratorImpl(config)); };
             userRepository = ContainerConfig.Resolve<IUserRepository>();
         }
 
         [Test]
-        public void Dapper_Insert_Ture()
+        public void Singel_Insert_Ture()
         {
             UserModel user = new UserModel()
             {
@@ -37,14 +38,37 @@ namespace Dapper_xTest
                 CreateAt = DateTime.Now,
                 UpdateAt = DateTime.Now,
             };
-            int row = userRepository.ExecuteInsert(user);
-
-            string sql = "select t.*,'cus_prop' customproperty from sys_user t where deleted=0";
-            long count = 0;
-            IEnumerable<UserDto> userDto = userRepository.ExecutePageList<UserDto>(sql,0,10,out count,null);
-            Assert.AreEqual(count, 1);
-            Assert.AreEqual(userDto.FirstOrDefault().CustomProperty, "cus_prop");
-
+            int affected = userRepository.ExecuteInsert(user);
+            Assert.IsTrue(affected == 1);
+        }
+        [Test]
+        public void Mutil_Insert_Ture()
+        {
+            List<UserModel> list = new List<UserModel>();
+            for (int i = 0; i < 10; i++)
+            {
+                UserModel user = new UserModel()
+                {
+                    UserName = "w.f",
+                    Age = 25,
+                    Email = "2578879902",
+                    Gender = GenderEnum.男,
+                    Memo = "",
+                    Password = "123456",
+                    Phone = "",
+                    Salt = "",
+                    CreateAt = DateTime.Now,
+                    UpdateAt = DateTime.Now,
+                };
+                list.Add(user);
+            }
+            int affected = userRepository.ExecuteInsert(list);
+            Assert.IsTrue(affected == 10);
+        }
+        [Test]
+        public void SnowID()
+        {
+            Assert.IsNaN(SnowflakeIDcreator.nextId());
         }
 
     }

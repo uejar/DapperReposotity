@@ -81,7 +81,7 @@ namespace DapperReposotity
         /// <param name="list"></param>
         /// <param name="transaction"></param>
         /// <returns></returns>
-        void ExecuteInsert(IEnumerable<T> list, IDbTransaction transaction = null);
+        int ExecuteInsert(IEnumerable<T> list, IDbTransaction transaction = null);
 
         /// <summary>
         /// 更新实体
@@ -97,7 +97,5 @@ namespace DapperReposotity
         /// <param name="transaction"></param>
         /// <returns></returns>
         bool ExecuteUpdate(IEnumerable<T> list, IDbTransaction transaction = null);
-
-
     }
 }

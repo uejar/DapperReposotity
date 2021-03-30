@@ -5,6 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac.Extras.DynamicProxy" Version="6.0.0" />
+    <PackageReference Include="Castle.Core" Version="4.4.1" />
     <PackageReference Include="Dapper" Version="2.0.78" />
     <PackageReference Include="DapperExtensions.NetCore" Version="2.0.7" />
   </ItemGroup>

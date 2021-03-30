@@ -5,6 +5,9 @@ using System.Data;
 using System.Text;
 using DapperExtensions;
 using DapperExtensions.Sql;
+using System.Reflection;
+using DapperExtensions.Mapper;
+using System.Linq;
 
 namespace DapperReposotity
 {
@@ -26,12 +29,29 @@ namespace DapperReposotity
         public virtual int ExecuteInsert(T item, IDbTransaction transaction = null)
         {
             return Connection.Insert(item, transaction: transaction, commandTimeout: commandTimeout);
+
         }
 
-        public virtual void ExecuteInsert(IEnumerable<T> list, IDbTransaction transaction = null)
+        public virtual int ExecuteInsert(IEnumerable<T> list, IDbTransaction transaction = null)
         {
 
-            Connection.Insert(list, transaction: transaction, commandTimeout: commandTimeout);
+            using (IDbConnection connection = Connection)
+            {
+                int affected = 0;
+                try
+                {
+                    connection.Open();
+                    transaction = connection.BeginTransaction();
+                    connection.Insert(list, transaction: transaction, commandTimeout: commandTimeout);
+                    transaction.Commit();
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                }
+                return affected;
+            }
+
         }
 
         public virtual IEnumerable<T1> ExecuteList<T1>(string sql, object param = null, IDbTransaction transaction = null) where T1 : class
@@ -62,7 +82,7 @@ namespace DapperReposotity
 
         public virtual int ExecuteSqlInt(string sql, object param = null, IDbTransaction transaction = null)
         {
-            throw new NotImplementedException();
+            return Connection.QueryFirst<int>(sql, param, transaction, commandTimeout: commandTimeout);
         }
 
         public virtual bool ExecuteUpdate(T item, IDbTransaction transaction = null)
