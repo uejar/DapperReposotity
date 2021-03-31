@@ -3,6 +3,7 @@ using DapperExtensions;
 using DapperExtensions.Mapper;
 using DapperExtensions.Sql;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -17,19 +18,112 @@ using static Dapper.SqlMapper;
 
 namespace Dapper_xTest
 {
+
+    public class SnowConfiguration : IDapperExtensionsConfiguration
+    {
+        private readonly ConcurrentDictionary<Type, IClassMapper> _classMaps = new ConcurrentDictionary<Type, IClassMapper>();
+
+        public Type DefaultMapper { get; private set; }
+        public IList<Assembly> MappingAssemblies { get; private set; }
+        public ISqlDialect Dialect { get; private set; }
+        protected bool IsManualID { get; set; } = true;
+        public SnowConfiguration(bool isManualID) : this(isManualID, typeof(AutoClassMapper<>), new List<Assembly>(), new SqlServerDialect()) { }
+        public SnowConfiguration(bool isManualID, Type defaultMapper, IList<Assembly> mappingAssemblies, ISqlDialect sqlDialect)
+        {
+            DefaultMapper = defaultMapper;
+            MappingAssemblies = mappingAssemblies ?? new List<Assembly>();
+            Dialect = sqlDialect;
+            IsManualID = isManualID;
+        }
+        public IClassMapper GetMap(Type entityType)
+        {
+            IClassMapper map;
+            if (!_classMaps.TryGetValue(entityType, out map))
+            {
+                Type mapType = GetMapType(entityType);
+                if (mapType == null)
+                {
+                    mapType = DefaultMapper.MakeGenericType(entityType);
+                }
+
+                map = Activator.CreateInstance(mapType, new object[] { IsManualID }) as IClassMapper;
+                _classMaps[entityType] = map;
+            }
+
+            return map;
+        }
+
+        public IClassMapper GetMap<T>() where T : class
+        {
+            return GetMap(typeof(T));
+        }
+
+        public void ClearCache()
+        {
+            _classMaps.Clear();
+        }
+
+        public Guid GetNextGuid()
+        {
+            byte[] b = Guid.NewGuid().ToByteArray();
+            DateTime dateTime = new DateTime(1900, 1, 1);
+            DateTime now = DateTime.Now;
+            TimeSpan timeSpan = new TimeSpan(now.Ticks - dateTime.Ticks);
+            TimeSpan timeOfDay = now.TimeOfDay;
+            byte[] bytes1 = BitConverter.GetBytes(timeSpan.Days);
+            byte[] bytes2 = BitConverter.GetBytes((long)(timeOfDay.TotalMilliseconds / 3.333333));
+            Array.Reverse(bytes1);
+            Array.Reverse(bytes2);
+            Array.Copy(bytes1, bytes1.Length - 2, b, b.Length - 6, 2);
+            Array.Copy(bytes2, bytes2.Length - 4, b, b.Length - 4, 4);
+            return new Guid(b);
+        }
+
+        protected virtual Type GetMapType(Type entityType)
+        {
+            Func<Assembly, Type> getType = a =>
+            {
+                Type[] types = a.GetTypes();
+                return (from type in types
+                        let interfaceType = type.GetInterface(typeof(IClassMapper<>).FullName)
+                        where
+                            interfaceType != null &&
+                            interfaceType.GetGenericArguments()[0] == entityType
+                        select type).SingleOrDefault();
+            };
+
+            Type result = getType(entityType.Assembly);
+            if (result != null)
+            {
+                return result;
+            }
+
+            foreach (var mappingAssembly in MappingAssemblies)
+            {
+                result = getType(mappingAssembly);
+                if (result != null)
+                {
+                    return result;
+                }
+            }
+
+            return getType(entityType.Assembly);
+        }
+    }
+
     public class SnowClassMapper<T> : AutoClassMapper<T> where T : class
     {
         /// <summary>
         /// 是否手动的非uuid
         /// </summary>
-        protected virtual bool IsManualID { get; set; } = true;
+        private bool _isManualID { get; set; } = true;
 
-
-        public SnowClassMapper()
+        public SnowClassMapper(bool IsManualID = true)
         {
             Type type = typeof(T);
             TableAttribute table = typeof(T).GetCustomAttribute<TableAttribute>();
             Table(table == null ? type.Name : table.Name);
+            _isManualID = IsManualID;
             AutoMap();
         }
         protected override void AutoMap(Func<Type, PropertyInfo, bool> canMap)
@@ -71,7 +165,7 @@ namespace Dapper_xTest
                 }
             }
 
-            if (keyMap != null && !IsManualID)
+            if (keyMap != null && !_isManualID)
             {
                 keyMap.Key(PropertyTypeKeyTypeMapping.ContainsKey(keyMap.PropertyInfo.PropertyType)
                     ? PropertyTypeKeyTypeMapping[keyMap.PropertyInfo.PropertyType]
@@ -570,10 +664,5 @@ namespace Dapper_xTest
     public class SnowSqlGeneratorImpl : SqlGeneratorImpl
     {
         public SnowSqlGeneratorImpl(IDapperExtensionsConfiguration configuration) : base(configuration) { }
-
-        public override bool SupportsMultipleStatements()
-        {
-            return base.SupportsMultipleStatements();
-        }
     }
 }

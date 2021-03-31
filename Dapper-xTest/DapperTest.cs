@@ -1,4 +1,5 @@
 ﻿using DapperEntities;
+using DapperExtensions;
 using DapperExtensions.Sql;
 using DapperReposotity;
 using MySql.Data.MySqlClient;
@@ -19,8 +20,9 @@ namespace Dapper_xTest
         public void Initliazation()
         {
             Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
-            DapperExtensions.DapperExtensions.Configure(typeof(SnowClassMapper<>), new List<Assembly>(), new MySqlDialect());
+            IDapperExtensionsConfiguration config = new SnowConfiguration(true, typeof(SnowClassMapper<>), null, new MySqlDialect());
             DapperExtensions.DapperExtensions.InstanceFactory = (config) => { return new SnowDapperImplementor(new SnowSqlGeneratorImpl(config)); };
+            DapperExtensions.DapperExtensions.Configure(config);
             userRepository = ContainerConfig.Resolve<IUserRepository>();
         }
 
