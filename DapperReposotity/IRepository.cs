@@ -68,6 +68,8 @@ namespace DapperReposotity
         /// <param name="transaction"></param>
         /// <returns></returns>
         T GetById(dynamic id, IDbTransaction transaction = null);
+
+        IEnumerable<T> GetList(object where, IDbTransaction transaction = null);
         /// <summary>
         /// 插入实体
         /// </summary>
@@ -81,7 +83,7 @@ namespace DapperReposotity
         /// <param name="list"></param>
         /// <param name="transaction"></param>
         /// <returns></returns>
-        int ExecuteInsert(IEnumerable<T> list, IDbTransaction transaction = null);
+        bool ExecuteInsert(IEnumerable<T> list, IDbTransaction transaction = null);
 
         /// <summary>
         /// 更新实体

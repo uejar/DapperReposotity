@@ -1,9 +1,11 @@
 ﻿using DapperEntities;
 using DapperExtensions.Sql;
 using DapperReposotity;
+using MySql.Data.MySqlClient;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Reflection;
 
@@ -62,9 +64,36 @@ namespace Dapper_xTest
                 };
                 list.Add(user);
             }
-            int affected = userRepository.ExecuteInsert(list);
-            Assert.IsTrue(affected == 10);
+            bool affected = userRepository.ExecuteInsert(list);
+            Assert.IsTrue(affected);
         }
+        [Test]
+        public void Singel_Get_True()
+        {
+            UserModel user = userRepository.GetById(26495435886347264);
+            Assert.AreEqual(user.UserName, "w.f");
+        }
+        [Test]
+        public void Mutil_Get_True()
+        {
+            IDictionary<string, object> kvp = new Dictionary<string, object>();
+            kvp.Add("UserName", "w.f");
+            kvp.Add("ID", 26495435886347264);
+            IEnumerable<UserModel> users = userRepository.GetList(kvp);
+            Assert.IsTrue(users.Count() == 1);
+        }
+
+        [Test]
+        public void Singel_Update_True()
+        {
+            UserModel user = userRepository.GetById(26495435886347264);
+            UserModel dest = (UserModel)user.Clone();
+
+            dest.UserName = "111111111111111";
+            bool affected = userRepository.ExecuteUpdate(dest);
+            Assert.IsTrue(affected);
+        }
+
         [Test]
         public void SnowID()
         {

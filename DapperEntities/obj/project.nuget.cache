@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Z0TJNSXfhNkSRlfeKxQutalE4zMUfZLpKia2gwwDe4aFYB/5hDTFPddN/jYkVjQam9B7JzZPAAN701rDt14Lzw==",
+  "dgSpecHash": "jFOz5AIXNNvRudS6l9GBcseDTSXAvHIXGxPVyXYzEaYBWgOgMdbptfq6ibCzlLoqY7Cd4nBkqKI/ZgML3MsjGg==",
   "success": true,
-  "projectFilePath": "F:\\DotnetProject\\Dapper-xTest\\DapperEntities\\DapperEntities.csproj",
+  "projectFilePath": "F:\\DotnetProject\\DapperReposotity\\DapperEntities\\DapperEntities.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

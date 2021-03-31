@@ -6187,11 +6187,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\DotnetProject\\Dapper-xTest\\Dapper-xTest\\Dapper-xTest.csproj",
+      "projectUniqueName": "F:\\DotnetProject\\DapperReposotity\\Dapper-xTest\\Dapper-xTest.csproj",
       "projectName": "Dapper-xTest",
-      "projectPath": "F:\\DotnetProject\\Dapper-xTest\\Dapper-xTest\\Dapper-xTest.csproj",
+      "projectPath": "F:\\DotnetProject\\DapperReposotity\\Dapper-xTest\\Dapper-xTest.csproj",
       "packagesPath": "C:\\Users\\HZ\\.nuget\\packages\\",
-      "outputPath": "F:\\DotnetProject\\Dapper-xTest\\Dapper-xTest\\obj\\",
+      "outputPath": "F:\\DotnetProject\\DapperReposotity\\Dapper-xTest\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -6211,8 +6211,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "F:\\DotnetProject\\Dapper-xTest\\DapperReposotity\\DapperReposotity.csproj": {
-              "projectPath": "F:\\DotnetProject\\Dapper-xTest\\DapperReposotity\\DapperReposotity.csproj"
+            "F:\\DotnetProject\\DapperReposotity\\DapperReposotity\\DapperReposotity.csproj": {
+              "projectPath": "F:\\DotnetProject\\DapperReposotity\\DapperReposotity\\DapperReposotity.csproj"
             }
           }
         }

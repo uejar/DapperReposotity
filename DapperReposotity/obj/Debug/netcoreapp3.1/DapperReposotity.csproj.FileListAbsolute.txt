@@ -10,3 +10,15 @@ F:\DotnetProject\Dapper-xTest\DapperReposotity\bin\Debug\netcoreapp3.1\DapperEnt
 F:\DotnetProject\Dapper-xTest\DapperReposotity\obj\Debug\netcoreapp3.1\DapperReposotity.csproj.CopyComplete
 F:\DotnetProject\Dapper-xTest\DapperReposotity\obj\Debug\netcoreapp3.1\DapperReposotity.dll
 F:\DotnetProject\Dapper-xTest\DapperReposotity\obj\Debug\netcoreapp3.1\DapperReposotity.pdb
+F:\DotnetProject\DapperReposotity\DapperReposotity\bin\Debug\netcoreapp3.1\DapperReposotity.deps.json
+F:\DotnetProject\DapperReposotity\DapperReposotity\bin\Debug\netcoreapp3.1\DapperReposotity.dll
+F:\DotnetProject\DapperReposotity\DapperReposotity\bin\Debug\netcoreapp3.1\DapperReposotity.pdb
+F:\DotnetProject\DapperReposotity\DapperReposotity\bin\Debug\netcoreapp3.1\DapperEntities.dll
+F:\DotnetProject\DapperReposotity\DapperReposotity\bin\Debug\netcoreapp3.1\DapperEntities.pdb
+F:\DotnetProject\DapperReposotity\DapperReposotity\obj\Debug\netcoreapp3.1\DapperReposotity.csprojAssemblyReference.cache
+F:\DotnetProject\DapperReposotity\DapperReposotity\obj\Debug\netcoreapp3.1\DapperReposotity.AssemblyInfoInputs.cache
+F:\DotnetProject\DapperReposotity\DapperReposotity\obj\Debug\netcoreapp3.1\DapperReposotity.AssemblyInfo.cs
+F:\DotnetProject\DapperReposotity\DapperReposotity\obj\Debug\netcoreapp3.1\DapperReposotity.csproj.CoreCompileInputs.cache
+F:\DotnetProject\DapperReposotity\DapperReposotity\obj\Debug\netcoreapp3.1\DapperReposotity.csproj.CopyComplete
+F:\DotnetProject\DapperReposotity\DapperReposotity\obj\Debug\netcoreapp3.1\DapperReposotity.dll
+F:\DotnetProject\DapperReposotity\DapperReposotity\obj\Debug\netcoreapp3.1\DapperReposotity.pdb

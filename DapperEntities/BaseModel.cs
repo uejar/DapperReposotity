@@ -9,7 +9,7 @@ namespace DapperEntities
     /// <summary>
     /// POCO 基类
     /// </summary>
-    public abstract class BaseModel
+    public abstract class BaseModel : ICloneable
     {
         private long _id = 0;
         /// <summary>
@@ -37,6 +37,10 @@ namespace DapperEntities
         /// </summary>
         [Column("memo")] public virtual string Memo { get; set; }
 
+        public virtual object Clone()
+        {
+            return MemberwiseClone();
+        }
     }
 
     public enum GenderEnum

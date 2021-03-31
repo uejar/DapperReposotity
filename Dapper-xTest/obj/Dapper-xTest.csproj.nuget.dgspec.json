@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\DotnetProject\\Dapper-xTest\\Dapper-xTest\\Dapper-xTest.csproj": {}
+    "F:\\DotnetProject\\DapperReposotity\\Dapper-xTest\\Dapper-xTest.csproj": {}
   },
   "projects": {
-    "F:\\DotnetProject\\Dapper-xTest\\Dapper-xTest\\Dapper-xTest.csproj": {
+    "F:\\DotnetProject\\DapperReposotity\\Dapper-xTest\\Dapper-xTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\DotnetProject\\Dapper-xTest\\Dapper-xTest\\Dapper-xTest.csproj",
+        "projectUniqueName": "F:\\DotnetProject\\DapperReposotity\\Dapper-xTest\\Dapper-xTest.csproj",
         "projectName": "Dapper-xTest",
-        "projectPath": "F:\\DotnetProject\\Dapper-xTest\\Dapper-xTest\\Dapper-xTest.csproj",
+        "projectPath": "F:\\DotnetProject\\DapperReposotity\\Dapper-xTest\\Dapper-xTest.csproj",
         "packagesPath": "C:\\Users\\HZ\\.nuget\\packages\\",
-        "outputPath": "F:\\DotnetProject\\Dapper-xTest\\Dapper-xTest\\obj\\",
+        "outputPath": "F:\\DotnetProject\\DapperReposotity\\Dapper-xTest\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -31,8 +31,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "F:\\DotnetProject\\Dapper-xTest\\DapperReposotity\\DapperReposotity.csproj": {
-                "projectPath": "F:\\DotnetProject\\Dapper-xTest\\DapperReposotity\\DapperReposotity.csproj"
+              "F:\\DotnetProject\\DapperReposotity\\DapperReposotity\\DapperReposotity.csproj": {
+                "projectPath": "F:\\DotnetProject\\DapperReposotity\\DapperReposotity\\DapperReposotity.csproj"
               }
             }
           }
@@ -94,14 +94,14 @@
         }
       }
     },
-    "F:\\DotnetProject\\Dapper-xTest\\DapperEntities\\DapperEntities.csproj": {
+    "F:\\DotnetProject\\DapperReposotity\\DapperEntities\\DapperEntities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\DotnetProject\\Dapper-xTest\\DapperEntities\\DapperEntities.csproj",
+        "projectUniqueName": "F:\\DotnetProject\\DapperReposotity\\DapperEntities\\DapperEntities.csproj",
         "projectName": "DapperEntities",
-        "projectPath": "F:\\DotnetProject\\Dapper-xTest\\DapperEntities\\DapperEntities.csproj",
+        "projectPath": "F:\\DotnetProject\\DapperReposotity\\DapperEntities\\DapperEntities.csproj",
         "packagesPath": "C:\\Users\\HZ\\.nuget\\packages\\",
-        "outputPath": "F:\\DotnetProject\\Dapper-xTest\\DapperEntities\\obj\\",
+        "outputPath": "F:\\DotnetProject\\DapperReposotity\\DapperEntities\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -150,14 +150,14 @@
         }
       }
     },
-    "F:\\DotnetProject\\Dapper-xTest\\DapperReposotity\\DapperReposotity.csproj": {
+    "F:\\DotnetProject\\DapperReposotity\\DapperReposotity\\DapperReposotity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\DotnetProject\\Dapper-xTest\\DapperReposotity\\DapperReposotity.csproj",
+        "projectUniqueName": "F:\\DotnetProject\\DapperReposotity\\DapperReposotity\\DapperReposotity.csproj",
         "projectName": "DapperReposotity",
-        "projectPath": "F:\\DotnetProject\\Dapper-xTest\\DapperReposotity\\DapperReposotity.csproj",
+        "projectPath": "F:\\DotnetProject\\DapperReposotity\\DapperReposotity\\DapperReposotity.csproj",
         "packagesPath": "C:\\Users\\HZ\\.nuget\\packages\\",
-        "outputPath": "F:\\DotnetProject\\Dapper-xTest\\DapperReposotity\\obj\\",
+        "outputPath": "F:\\DotnetProject\\DapperReposotity\\DapperReposotity\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -177,8 +177,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "F:\\DotnetProject\\Dapper-xTest\\DapperEntities\\DapperEntities.csproj": {
-                "projectPath": "F:\\DotnetProject\\Dapper-xTest\\DapperEntities\\DapperEntities.csproj"
+              "F:\\DotnetProject\\DapperReposotity\\DapperEntities\\DapperEntities.csproj": {
+                "projectPath": "F:\\DotnetProject\\DapperReposotity\\DapperEntities\\DapperEntities.csproj"
               }
             }
           }

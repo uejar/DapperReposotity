@@ -359,20 +359,49 @@ namespace Dapper_xTest
 
             return wherePredicate;
         }
+        public IDictionary<string, object> GetObjectValues(object obj)
+        {
+            IDictionary<string, object> dictionary = new Dictionary<string, object>();
+            if (obj == null)
+            {
+                return dictionary;
+            }
+
+            PropertyInfo[] properties = obj.GetType().GetProperties();
+            foreach (PropertyInfo obj2 in properties)
+            {
+                string name = obj2.Name;
+                object obj3 = dictionary[name] = obj2.GetValue(obj, null);
+            }
+
+            return dictionary;
+        }
 
         protected IPredicate GetEntityPredicate(IClassMapper classMap, object entity)
         {
+
             Type predicateType = typeof(FieldPredicate<>).MakeGenericType(classMap.EntityType);
             IList<IPredicate> predicates = new List<IPredicate>();
             var notIgnoredColumns = classMap.Properties.Where(p => !p.Ignored);
-            foreach (var kvp in ReflectionHelper.GetObjectValues(entity).Where(property => notIgnoredColumns.Any(c => c.Name == property.Key)))
+            IDictionary<string, object> kvp = new Dictionary<string, object>();
+            if (entity.GetType() == typeof(IDictionary<string, object>) || entity.GetType() == typeof(Dictionary<string, object>))
+            {
+                kvp = (IDictionary<string, object>)entity;
+            }
+            else
+            {
+                kvp = ReflectionHelper.GetObjectValues(entity);
+            }
+            foreach (var kv in kvp.Where(property => notIgnoredColumns.Any(c => c.Name.Equals(property.Key, StringComparison.OrdinalIgnoreCase))))
             {
                 IFieldPredicate fieldPredicate = Activator.CreateInstance(predicateType) as IFieldPredicate;
+                string keyName = notIgnoredColumns.FirstOrDefault(s => s.Name.Equals(kv.Key, StringComparison.OrdinalIgnoreCase)).Name;
                 fieldPredicate.Not = false;
                 fieldPredicate.Operator = Operator.Eq;
-                fieldPredicate.PropertyName = kvp.Key;
-                fieldPredicate.Value = kvp.Value;
+                fieldPredicate.PropertyName = keyName;
+                fieldPredicate.Value = kv.Value;
                 predicates.Add(fieldPredicate);
+
             }
             return predicates.Count == 1
                        ? predicates[0]
@@ -385,7 +414,7 @@ namespace Dapper_xTest
         protected IPredicate GetIdPredicate(IClassMapper classMap, object id)
         {
             bool isSimpleType = ReflectionHelper.IsSimpleType(id.GetType());
-            var keys = classMap.Properties.Where(p => p.KeyType != KeyType.NotAKey);
+            var keys = classMap.Properties.Where(p => p.KeyType != KeyType.NotAKey || p.PropertyInfo.GetCustomAttribute<KeyAttribute>() != null);
             IDictionary<string, object> paramValues = null;
             IList<IPredicate> predicates = new List<IPredicate>();
             if (!isSimpleType)
@@ -434,7 +463,7 @@ namespace Dapper_xTest
         }
         protected IPredicate GetKeyPredicate<T>(IClassMapper classMap, T entity) where T : class
         {
-            var whereFields = classMap.Properties.Where(p => p.KeyType != KeyType.NotAKey);
+            var whereFields = classMap.Properties.Where(p => p.KeyType != KeyType.NotAKey || p.PropertyInfo.GetCustomAttribute<KeyAttribute>() != null);
             if (!whereFields.Any())
             {
                 throw new ArgumentException("At least one Key column must be defined.");

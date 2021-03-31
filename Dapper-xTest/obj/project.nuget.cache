@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "uLmEC5m5bEMFfAJc3dQa36jdwsaAbDwyXqHshrN6voD13KurCk05m8EtTxUpYOjZirimX68dQgoYbmlOqD2pxg==",
+  "dgSpecHash": "OIk+0sZeur4RoPymiYIc1TaAwCgcywB4U1EJyPVziXk/Z91S0iGwOxQXW0GBwJ5m7eH6MktsFQAZClRoXEPQgQ==",
   "success": true,
-  "projectFilePath": "F:\\DotnetProject\\Dapper-xTest\\Dapper-xTest\\Dapper-xTest.csproj",
+  "projectFilePath": "F:\\DotnetProject\\DapperReposotity\\Dapper-xTest\\Dapper-xTest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\HZ\\.nuget\\packages\\autofac\\6.1.0\\autofac.6.1.0.nupkg.sha512",
     "C:\\Users\\HZ\\.nuget\\packages\\autofac.extras.dynamicproxy\\6.0.0\\autofac.extras.dynamicproxy.6.0.0.nupkg.sha512",

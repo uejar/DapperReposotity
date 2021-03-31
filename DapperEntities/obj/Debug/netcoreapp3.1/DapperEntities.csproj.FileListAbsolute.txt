@@ -6,3 +6,12 @@ F:\DotnetProject\Dapper-xTest\DapperEntities\obj\Debug\netcoreapp3.1\DapperEntit
 F:\DotnetProject\Dapper-xTest\DapperEntities\obj\Debug\netcoreapp3.1\DapperEntities.csproj.CoreCompileInputs.cache
 F:\DotnetProject\Dapper-xTest\DapperEntities\obj\Debug\netcoreapp3.1\DapperEntities.dll
 F:\DotnetProject\Dapper-xTest\DapperEntities\obj\Debug\netcoreapp3.1\DapperEntities.pdb
+F:\DotnetProject\DapperReposotity\DapperEntities\bin\Debug\netcoreapp3.1\DapperEntities.deps.json
+F:\DotnetProject\DapperReposotity\DapperEntities\bin\Debug\netcoreapp3.1\DapperEntities.dll
+F:\DotnetProject\DapperReposotity\DapperEntities\bin\Debug\netcoreapp3.1\DapperEntities.pdb
+F:\DotnetProject\DapperReposotity\DapperEntities\obj\Debug\netcoreapp3.1\DapperEntities.csprojAssemblyReference.cache
+F:\DotnetProject\DapperReposotity\DapperEntities\obj\Debug\netcoreapp3.1\DapperEntities.AssemblyInfoInputs.cache
+F:\DotnetProject\DapperReposotity\DapperEntities\obj\Debug\netcoreapp3.1\DapperEntities.AssemblyInfo.cs
+F:\DotnetProject\DapperReposotity\DapperEntities\obj\Debug\netcoreapp3.1\DapperEntities.csproj.CoreCompileInputs.cache
+F:\DotnetProject\DapperReposotity\DapperEntities\obj\Debug\netcoreapp3.1\DapperEntities.dll
+F:\DotnetProject\DapperReposotity\DapperEntities\obj\Debug\netcoreapp3.1\DapperEntities.pdb

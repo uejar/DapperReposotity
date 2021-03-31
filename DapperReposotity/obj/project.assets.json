@@ -5282,11 +5282,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\DotnetProject\\Dapper-xTest\\DapperReposotity\\DapperReposotity.csproj",
+      "projectUniqueName": "F:\\DotnetProject\\DapperReposotity\\DapperReposotity\\DapperReposotity.csproj",
       "projectName": "DapperReposotity",
-      "projectPath": "F:\\DotnetProject\\Dapper-xTest\\DapperReposotity\\DapperReposotity.csproj",
+      "projectPath": "F:\\DotnetProject\\DapperReposotity\\DapperReposotity\\DapperReposotity.csproj",
       "packagesPath": "C:\\Users\\HZ\\.nuget\\packages\\",
-      "outputPath": "F:\\DotnetProject\\Dapper-xTest\\DapperReposotity\\obj\\",
+      "outputPath": "F:\\DotnetProject\\DapperReposotity\\DapperReposotity\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -5306,8 +5306,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "F:\\DotnetProject\\Dapper-xTest\\DapperEntities\\DapperEntities.csproj": {
-              "projectPath": "F:\\DotnetProject\\Dapper-xTest\\DapperEntities\\DapperEntities.csproj"
+            "F:\\DotnetProject\\DapperReposotity\\DapperEntities\\DapperEntities.csproj": {
+              "projectPath": "F:\\DotnetProject\\DapperReposotity\\DapperEntities\\DapperEntities.csproj"
             }
           }
         }

@@ -32,22 +32,24 @@ namespace DapperReposotity
 
         }
 
-        public virtual int ExecuteInsert(IEnumerable<T> list, IDbTransaction transaction = null)
+        public virtual bool ExecuteInsert(IEnumerable<T> list, IDbTransaction transaction = null)
         {
 
             using (IDbConnection connection = Connection)
             {
-                int affected = 0;
+                bool affected = false;
                 try
                 {
                     connection.Open();
                     transaction = connection.BeginTransaction();
                     connection.Insert(list, transaction: transaction, commandTimeout: commandTimeout);
                     transaction.Commit();
+                    affected = true;
                 }
                 catch (Exception ex)
                 {
                     transaction.Rollback();
+                    throw new DataException("插入事务失败", ex);
                 }
                 return affected;
             }
@@ -92,12 +94,34 @@ namespace DapperReposotity
 
         public virtual bool ExecuteUpdate(IEnumerable<T> list, IDbTransaction transaction = null)
         {
-            return Connection.Update(list, transaction, commandTimeout);
+            using (IDbConnection connection = Connection)
+            {
+                bool affected = false;
+                try
+                {
+                    connection.Open();
+                    transaction = connection.BeginTransaction();
+                    Connection.Update(list, transaction, commandTimeout);
+                    transaction.Commit();
+                    affected = true;
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    throw new DataException("更新事务失败", ex);
+                }
+                return affected;
+            }
         }
 
         public virtual T GetById(object id, IDbTransaction transaction = null)
         {
             return Connection.Get<T>(id, transaction, commandTimeout);
+        }
+
+        public IEnumerable<T> GetList(object where, IDbTransaction transaction = null)
+        {
+            return Connection.GetList<T>(where, null, transaction, commandTimeout);
         }
     }
 }
