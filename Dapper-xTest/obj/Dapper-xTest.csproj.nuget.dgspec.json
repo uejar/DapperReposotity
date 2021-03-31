@@ -62,6 +62,10 @@
               "target": "Package",
               "version": "[16.9.1, )"
             },
+            "MiniProfiler.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[4.2.22, )"
+            },
             "MySql.Data": {
               "target": "Package",
               "version": "[8.0.23, )"
@@ -73,6 +77,10 @@
             "NUnit3TestAdapter": {
               "target": "Package",
               "version": "[3.17.0, )"
+            },
+            "System.Data.Common": {
+              "target": "Package",
+              "version": "[4.3.0, )"
             }
           },
           "imports": [

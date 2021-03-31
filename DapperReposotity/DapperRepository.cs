@@ -14,7 +14,7 @@ namespace DapperReposotity
     public class DapperRepository<T> : IRepository<T> where T : class
     {
         protected virtual int commandTimeout { get; set; } = 30;
-        protected virtual IDbConnection Connection { get; set; }
+        public IDbConnection Connection { get; set; }
         public DapperRepository(IDbConnection connection)
         {
             Connection = connection;

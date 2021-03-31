@@ -1,12 +1,9 @@
 ﻿using Autofac;
+using Autofac.Extras.DynamicProxy;
 using DapperReposotity;
-using Microsoft.Extensions.Options;
 using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Reflection;
-using System.Text;
+
 
 namespace Dapper_xTest
 {
@@ -22,6 +19,7 @@ namespace Dapper_xTest
         private static string connectionString = "Server=localhost; Port=3306;Pooling=true;Max Pool Size =1024; Database=anno_shiro; Uid=root; Pwd=root;";
         private static void RegisterTypes(ContainerBuilder builder)
         {
+            builder.RegisterType<SqlLog>();
             builder.RegisterInstance<IDbConnection>(new MySqlConnection(connectionString));
 
             builder.RegisterGeneric(typeof(DapperRepository<>)).As(typeof(IRepository<>)).InstancePerDependency();
@@ -29,7 +27,8 @@ namespace Dapper_xTest
             var assembly = typeof(DapperRepository<>).Assembly;
             builder.RegisterAssemblyTypes(assembly)
                .AsImplementedInterfaces()
-               .InstancePerDependency();
+               .InstancePerDependency()
+               .InterceptedBy(typeof(SqlLog)).EnableInterfaceInterceptors(); ;
         }
 
         public static T Resolve<T>(ILifetimeScope scope = null) where T : class
